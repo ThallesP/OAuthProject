@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+		rel="stylesheet"
+	/>
+	<style>
+        body {
+            background-color: #212121;
+        }
+		.oauthDiv {
+			display: flex;
+			height: 95vh;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.oauthButtons {
+			margin-top: 0.8vh;
+			height: 3vh;
+			width: 25vh;
+			background-color: #1976d2;
+			color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5vh;
+            border: none;
+            border-radius: 0.5vh;
+			outline: none;
+			transition: 0.8s;
+		}
+
+		.oauthButtons:hover {
+			background-color: #0d47a1;
+		}
+	</style>
+	<body>
+		<div class="oauthDiv">
+			<button class="oauthButtons" onclick="discordButtonClick()">
+				Discord
+			</button>
+			<button class="oauthButtons">Google</button>
+		</div>
+	</body>
+
+	<script>
+		function discordButtonClick() {
+			window.location.replace("http://localhost:3333/api/v2/oauth/discord");
+		}
+	</script>
+</html>

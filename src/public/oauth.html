@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+		rel="stylesheet"
+	/>
+	<style>
+		body {
+			background-color: #212121;
+		}
+
+		.box {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.card {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 30px;
+			border-radius: 15px;
+			width: 30%;
+			height: 20%;
+			background: #424242;
+			text-align: center;
+			color: #000;
+			margin-top: 5rem;
+		}
+	</style>
+	<body>
+		<div class="box">
+			<div class="card"></div>
+		</div>
+	</body>
+
+	<script>
+		async function getUser() {
+			try {
+				const data = await fetch("http://localhost:3333/api/v2/@me");
+
+				const tokenData = await data.json();
+
+				const nodeH1 = document.createElement("h1");
+				const username = document.createTextNode(
+					`Welcome ${tokenData.username}!`
+				);
+				const email = document.createTextNode(
+					`Your email address is: ${tokenData.email}`
+				);
+
+				nodeH1.appendChild(username);
+				const nodeH2 = document.createElement("h2");
+				nodeH2.appendChild(email);
+				document
+					.getElementsByClassName("card")[0]
+					.appendChild(nodeH1)
+
+					document.getElementsByClassName("card")[0].appendChild(nodeH2)
+			} catch (error) {
+				window.location.replace("http://localhost:3333/app/login");
+			}
+		}
+
+		getUser();
+	</script>
+</html>
